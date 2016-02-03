@@ -1,7 +1,6 @@
 #include <Wire.h>
 #include "Adafruit_MCP9808.h"
-#include <Adafruit_Sensor.h>
-#include <Adafruit_ADXL345_U.h>
+
 // Create the MCP9808 temperature sensor object
 Adafruit_MCP9808 tempsensor = Adafruit_MCP9808();
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);

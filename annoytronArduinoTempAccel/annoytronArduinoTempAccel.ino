@@ -4,7 +4,6 @@
 #include <Adafruit_ADXL345_U.h>
 // Create the MCP9808 temperature sensor object
 Adafruit_MCP9808 tempsensor = Adafruit_MCP9808();
-Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
 
 int piezo = 5 ;
 float min_temp = 100.0 ; 
@@ -21,11 +20,7 @@ void setup() {
     Serial.println("Couldn't find MCP9808!");
     while (1);
   }
-  if (!accel.begin()) {
-    Serial.println("Couldn't find ADXL345!");
-    while(1);
-  }
-  accel.setRange(ADXL345_RANGE_16_G);
+
   calibrate(5000);
   Serial.println(min_temp);
 //  Serial.println("Calibration done");
@@ -34,14 +29,7 @@ void setup() {
 
 void loop() {
   // Read and print out the temperature, then convert to *F
-  sensors_event_t event; 
-  accel.getEvent(&event);
- 
-  /* Display the results (acceleration is measured in m/s^2) */
-  Serial.print("X: "); Serial.print(event.acceleration.x); Serial.print("  ");
-  Serial.print("Y: "); Serial.print(event.acceleration.y); Serial.print("  ");
-  Serial.print("Z: "); Serial.print(event.acceleration.z); Serial.print("  ");Serial.println("m/s^2 ");
-  delay(500);
+
   float c = tempsensor.readTempC();
   float f = c * 9.0 / 5.0 + 32;
   Serial.println(c) ;
