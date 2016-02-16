@@ -3,7 +3,7 @@ int light2 = A1 ;
 int lightVal1 ;
 int lightVal2 ; 
 
-int LED1 = 5 ; 
+int LED1 = 13 ; 
 int LEDVal ;
 
 int minVal = 1024;
